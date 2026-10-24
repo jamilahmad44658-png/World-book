@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #FFCC70;
+            background-image: linear-gradient(43deg, rgb(19 43 131 / 0.7) 0%, rgb(124 19 131 / 0.7) 46%, #bd2a61 70%, #df2e2e 100%);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: white;
+        }
+        .login-back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-back2 {
+            width: 100%;
+            max-width: 420px;
+            padding: 2.5rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            color: #ffffff;
+        }
+        .user {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+        }
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+        .field-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            padding-left: 8px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+        .username2, .username3 {
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 100%;
+            height: 48px;
+            padding: 0 20px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        .username3 {
+            padding-right: 50px;
+        }
+        .username2:focus, .username3:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+        }
+        .toggle-password-btn {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            user-select: none;
+            transition: color 0.2s ease;
+        }
+        .toggle-password-btn:hover {
+            color: #ffffff;
+        }
+        .login-button {
+            background-color: #ffffff;
+            color: #bd2a61;
+            border: none;
+            width: 100%;
+            height: 48px;
+            border-radius: 25px;
+            margin-top: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .login-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .login-button:active {
+            transform: translateY(1px);
+        }
+        .sing {
+            color: #FFCC70;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-right: 2.50rem;
+        }
+        .sing-up{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+<div class="login-back">
+    <div class="login-back2">
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <div class="user">Account Login</div>
+        </div>
+        <form action="Website/main.html" method="POST">
+            <div class="input-wrapper">
+                <label for="email-field" class="field-label">Gmail</label>
+                <input type="email" id="email-field" name="email" class="username2" required>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="password-field" class="field-label">Password</label>
+                <div class="password-container">
+                    <input type="password" id="password-field" name="password" class="username3" required>
+                    <button type="button" id="toggle-password" class="toggle-password-btn">👁️</button>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="login-button">Login</button>
+            </div>
+
+            <div class="sing-up">
+                <label class="field-label" style="margin: 0">Don`t have account or Sing up</label>
+                <a href="sing-up.html" class="sing">
+                    Sing Up
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const passwordInput = document.getElementById('password-field');
+    const toggleButton = document.getElementById('toggle-password');
+
+    toggleButton.addEventListener('click', function () {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleButton.textContent = '🙈';
+        } else {
+            passwordInput.type = 'password';
+            toggleButton.textContent = '👁️';
+        }
+    });
+</script>
+</body>
+</html>
